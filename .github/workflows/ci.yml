@@ -1,0 +1,24 @@
+name: Auto‑refresh container tags
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # daily 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/fetch-latest-tags.sh
+      - name: Commit changes if any
+        run: |
+          if [[ -n $(git status --porcelain .env.auto) ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add .env.auto
+            git commit -m "chore: bump container tags [skip ci]"
+            git push
+          else
+            echo "No tag changes."
+          fi

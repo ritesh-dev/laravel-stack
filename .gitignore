@@ -1,0 +1,8 @@
+/vendor
+/node_modules
+/.idea
+/.vscode
+src/storage/*
+src/bootstrap/cache/*
+.env
+.env.auto
