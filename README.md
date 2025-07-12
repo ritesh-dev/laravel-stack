@@ -28,7 +28,7 @@
 
 ```bash
 # 1. Clone
- git clone https://github.com/your-org/dynamic-laravel-stack.git
+ git clone https://github.com/ritesh-dev/laravel-stack.git
  cd dynamic-laravel-stack
 
 # 2. Initialise (fresh Laravel + latest tags)
